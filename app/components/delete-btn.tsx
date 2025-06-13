@@ -1,3 +1,5 @@
+'use client'
+
 import { Question, Quiz } from "../data/definitions";
 
 export default function DeleteBtn({item}: {item: Quiz | Question}) {

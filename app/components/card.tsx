@@ -4,6 +4,8 @@ import EditBtn from './edit-btn'
 
 export default function Card({item}: {item: Quiz | Question}) {
 
+    console.log(item)
+
     const card_type = item.card_type
 
     return (

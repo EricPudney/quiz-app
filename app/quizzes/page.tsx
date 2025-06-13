@@ -20,7 +20,7 @@ export default async function Quizzes() {
             <main >
                 <h1 className='text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 my-6'>My Quizzes</h1>
                 <div className='flex flex-wrap justify-center gap-4'>
-                    {quizData.map((q: Quiz)=><Card date_created={q.date_created} title={q.description} key={q.id}/>)}
+                    {quizData.map((q: Quiz)=><Card item={q} key={q.id}/>)}
                 </div>
             </main>
         </>
