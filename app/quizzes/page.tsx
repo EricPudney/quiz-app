@@ -1,5 +1,5 @@
 import { createClient } from '@/app/utils/supabase/server';
-import Card from '../components/card';
+import QuizCard from '../components/quiz-card';
 import { Quiz } from '../data/definitions';
 
 
@@ -20,7 +20,7 @@ export default async function Quizzes() {
             <main >
                 <h1 className='text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 my-6'>My Quizzes</h1>
                 <div className='flex flex-wrap justify-center gap-4'>
-                    {quizData.map((q: Quiz)=><Card item={q} key={q.id}/>)}
+                    {quizData.map((q: Quiz)=><QuizCard item={q} key={q.id}/>)}
                 </div>
             </main>
         </>

@@ -1,18 +1,16 @@
 'use client'
 
-import { Question, Quiz } from "../data/definitions";
+import Link from "next/link";
 
-export default function EditBtn({item}: {item: Quiz | Question}) {
-
-    const editItem = ()=>{
-        // redirect to edit item page
-    }
+export default function EditBtn({hRef}: {hRef: string}) {
 
     return (
         <>
-        <button className="px-6 py-2 rounded-xl bg-green-600 text-white hover:bg-green-800 w-[35%]" onClick={editItem}>
+            <Link href={hRef} className="px-6 py-2 rounded-xl bg-green-600 hover:bg-green-800 w-[35%]">
+            <span className="text-white">
             Edit
-        </button>
+            </span>
+            </Link>
         </>
     )
 }
