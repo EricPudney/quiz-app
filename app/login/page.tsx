@@ -2,6 +2,7 @@
 
 import { login, signup } from "../data/actions";
 import { createClient } from "../utils/supabase/client";
+import Image from "next/image";
 
 export default function LoginPage() {
   const supabase = createClient();
@@ -15,9 +16,9 @@ export default function LoginPage() {
 
   return (
     <>
-    <script src="https://accounts.google.com/gsi/client" async></script>
       <main className="px-2 py-2">
-        <form className="max-w-sm mx-auto mt-10 space-y-6 bg-white p-6 rounded-2xl shadow-md">
+        <h1 className='text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 my-6'>Log in or sign up</h1>
+        <form className="max-w-sm mx-auto space-y-6 bg-white p-6 rounded-2xl shadow-md">
           <div>
             <label
               htmlFor="email"
@@ -66,9 +67,18 @@ export default function LoginPage() {
           </div>
         </form>
 
-        <div>
-          
-          <button onClick={handleSignIn}>Sign in with Google</button>
+        <div className="flex flex-col mt-6 items-center">
+          <p className="my-6">----------or-----------</p>
+          <button
+            onClick={handleSignIn}
+          >
+            <Image
+              src="/icons/google-logo.png"
+              alt="Google logo"
+              width={200}
+              height={200}
+            />
+          </button>
         </div>
       </main>
     </>
