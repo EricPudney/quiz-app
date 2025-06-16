@@ -6,7 +6,7 @@ import { createClient } from '@/app/utils/supabase/server';
 import { revalidatePath } from "next/cache";
 
 
-export async function editItem(item: Quiz | Question) {
+export async function editItem({id, type}: {id: number, type: string}) {
 
 }
 
@@ -16,7 +16,8 @@ export async function deleteItem({id, type}: {id: number, type: string}) {
     const response = await supabase
     .from(type).delete()
     .eq('id', id)
-    return response
+    revalidatePath('/', 'layout')
+    redirect(`/${type}`)
 }
 
 export async function login(formData: FormData) {
@@ -29,6 +30,7 @@ export async function login(formData: FormData) {
   }
   const { error } = await supabase.auth.signInWithPassword(data)
   if (error) {
+    console.log(error.message)
     redirect('/error')
   }
   revalidatePath('/', 'layout')

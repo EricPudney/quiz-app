@@ -3,7 +3,7 @@ import { Quiz } from '@/app/data/definitions';
 import { createClient } from '@/app/utils/supabase/server';
 
 export default async function QuizPage({ params }: { params: { id: string } }) {
-    const id = Number(params.id)
+    const id = Number(await params.id)
     const supabase = await createClient();
     const { data: quiz, error } = await supabase.from("quizzes").select().eq('id', id);
     if (error) {
