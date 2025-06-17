@@ -6,6 +6,7 @@ import {
 import Link from "next/link";
 
 import LoginButton from "./login-btn";
+import { checkUser } from "../data/actions";
 
 export default async function Navbar() {
   const navItems = [
@@ -13,6 +14,9 @@ export default async function Navbar() {
     { href: "/quizzes", icon: ListBulletIcon, label: "Quizzes" },
     { href: "/questions", icon: QuestionMarkCircleIcon, label: "Questions" },
   ];
+
+  const loggedInUser = await checkUser()
+  console.log("There is a user logged in: ", loggedInUser)
 
   return (
     <>

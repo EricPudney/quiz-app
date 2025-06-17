@@ -1,23 +1,28 @@
 "use client";
 
 import { login, signup } from "../data/actions";
-import { createClient } from "../utils/supabase/client";
 import Image from "next/image";
+import { createClient } from "../utils/supabase/client";
 
 export default function LoginPage() {
   const supabase = createClient();
-
-  const handleGoogleSignIn = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
+  
+  async function loginWithGoogle() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
     });
-    if (error) console.error("Sign-in error:", error);
-  };
+    if (error) {
+      console.error("Sign-in error:", error);
+    }
+    console.log("OAuth result", { data, error });
+  }
 
   return (
     <>
       <main className="px-2 py-2 mt-16">
-        <h1 className='text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-6'>Log in or sign up</h1>
+        <h1 className="text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-6">
+          Log in or sign up
+        </h1>
         <form className="max-w-sm mx-auto space-y-6 bg-white p-6 rounded-2xl shadow-md">
           <div>
             <label
@@ -69,9 +74,7 @@ export default function LoginPage() {
 
         <div className="flex flex-col mt-6 items-center">
           <p className="my-6">----------or-----------</p>
-          <button
-            onClick={handleGoogleSignIn}
-          >
+          <button onClick={loginWithGoogle}>
             <Image
               src="/icons/google-logo.png"
               alt="Google logo"
