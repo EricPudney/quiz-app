@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function LoginPage() {
   const supabase = createClient();
 
-  const handleSignIn = async () => {
+  const handleGoogleSignIn = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
     });
@@ -16,8 +16,8 @@ export default function LoginPage() {
 
   return (
     <>
-      <main className="px-2 py-2">
-        <h1 className='text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 my-6'>Log in or sign up</h1>
+      <main className="px-2 py-2 mt-16">
+        <h1 className='text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 mb-6'>Log in or sign up</h1>
         <form className="max-w-sm mx-auto space-y-6 bg-white p-6 rounded-2xl shadow-md">
           <div>
             <label
@@ -70,7 +70,7 @@ export default function LoginPage() {
         <div className="flex flex-col mt-6 items-center">
           <p className="my-6">----------or-----------</p>
           <button
-            onClick={handleSignIn}
+            onClick={handleGoogleSignIn}
           >
             <Image
               src="/icons/google-logo.png"

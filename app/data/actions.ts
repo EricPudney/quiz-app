@@ -1,7 +1,6 @@
 'use server'
 
 import { redirect } from "next/navigation";
-import { Question, Quiz } from "./definitions";
 import { createClient } from '@/app/utils/supabase/server';
 import { revalidatePath } from "next/cache";
 
@@ -36,6 +35,7 @@ export async function login(formData: FormData) {
   revalidatePath('/', 'layout')
   redirect('/quizzes')
 }
+
 export async function signup(formData: FormData) {
   const supabase = await createClient()
   // type-casting here for convenience
@@ -50,4 +50,21 @@ export async function signup(formData: FormData) {
   }
   revalidatePath('/', 'layout')
   redirect('/')
+}
+
+export async function signOut() {
+  const supabase = await createClient()
+  const { error } = await supabase.auth.signOut()
+  if (error) {
+    console.error("Error: ", error.message)
+  }
+  revalidatePath('/', 'layout')
+}
+
+export async function getSession() {
+  const supabase = await createClient()
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  return session ? true : false
 }

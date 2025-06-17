@@ -16,5 +16,9 @@ export default async function QuizPage({ params }: { params: { id: string } }) {
     const questionString = JSON.stringify(question[0])
     const questionData: Question = JSON.parse(questionString)
 
-    return <QuestionInfo question={questionData}/>
+    return <>
+    <main className='mt-16'>
+        <QuestionInfo question={questionData}/>
+    </main>
+    </>
 }

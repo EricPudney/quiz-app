@@ -17,7 +17,7 @@ export default async function Quizzes() {
 
     return (
         <>
-            <main >
+            <main className='mt-16'>
                 <h1 className='text-4xl font-extrabold text-center text-blue-700 dark:text-blue-400 my-6'>My Quizzes</h1>
                 <div className='flex flex-wrap justify-center gap-4'>
                     {quizData.map((q: Quiz)=><QuizCard item={q} key={q.id}/>)}
