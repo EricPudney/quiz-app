@@ -15,16 +15,11 @@ export default async function Navbar() {
     { href: "/questions", icon: QuestionMarkCircleIcon, label: "Questions" },
   ];
 
-  const loggedInUser = await checkUser()
-  console.log("There is a user logged in: ", loggedInUser)
+  const loggedInUser = await checkUser();
+  console.log("There is a user logged in: ", loggedInUser);
 
   return (
     <>
-      <div className="md:hidden fixed top-0 left-0 right-0 bg-white border-b border-gray-200 shadow-sm z-50">
-        <div className="flex items-center justify-between px-4 h-14">
-          <LoginButton />
-        </div>
-      </div>
       <nav className="fixed bottom-0 left-0 right-0 md:top-0 md:bottom-auto bg-white border-t md:border-b border-gray-200 shadow-lg md:shadow-sm z-50">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -41,9 +36,6 @@ export default async function Navbar() {
                   </span>
                 </Link>
               ))}
-            </div>
-
-            <div className="hidden md:flex items-center space-x-4">
               <LoginButton />
             </div>
           </div>
