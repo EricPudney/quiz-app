@@ -28,7 +28,7 @@ export async function login(formData: FormData) {
     redirect("/error");
   }
   revalidatePath("/", "layout");
-  redirect("/quizzes");
+  redirect("/");
 }
 
 export async function signup(formData: FormData) {
@@ -54,7 +54,7 @@ export async function signOut() {
     console.error("Error: ", error.message);
   }
   revalidatePath("/", "layout");
-  redirect("/login");
+  redirect("/");
 }
 
 export async function checkUser() {

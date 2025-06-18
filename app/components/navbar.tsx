@@ -36,7 +36,9 @@ export default async function Navbar() {
                   </span>
                 </Link>
               ))}
-              <LoginButton />
+              <div className="w-[80px] flex justify-center">
+                <LoginButton />
+              </div>
             </div>
           </div>
         </div>

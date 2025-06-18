@@ -24,8 +24,13 @@ export default function LoginButton() {
   }, [])
 
   const handleClick = ()=>{
-    signOut()
-    setLoggedInUser(false)
+    try {
+      signOut()
+      setLoggedInUser(false)
+    }
+    catch (error) {
+      console.error(error)
+    }
   }
 
   return loggedInUser ? (
