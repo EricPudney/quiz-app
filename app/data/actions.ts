@@ -4,14 +4,43 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/app/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 
-export async function editItem({ id, type }: { id: number; type: string }) {}
+export async function editItem({ formData, id, type }: { formData: FormData; id: number; type: string }) {
+  console.log("updating item in db");
+  const supabase = await createClient();
+  const response = await supabase.from(type).update(formData).eq('id', id);
+  return response
+}
 
 export async function deleteItem({ id, type }: { id: number; type: string }) {
-  console.log("running server action");
   const supabase = await createClient();
   const response = await supabase.from(type).delete().eq("id", id);
   revalidatePath("/", "layout");
   redirect(`/${type}`);
+}
+
+export async function addQuestion(formData: FormData) {
+  console.log(formData);
+  const supabase = await createClient();
+  const newQ = {
+    text: formData.get("text") as string,
+    answer: formData.get("answer") as string,
+  }
+  const response = await supabase.from("questions").insert(newQ);
+  console.log(response);
+  revalidatePath("/", "layout");
+  redirect(`/questions`);
+}
+
+export async function addQuiz(formData: FormData) {
+  console.log(formData);
+  const supabase = await createClient();
+  const newQ = {
+    description: formData.get("description") as string,
+  }
+  const response = await supabase.from("quizzes").insert(newQ);
+  console.log(response);
+  revalidatePath("/", "layout");
+  redirect(`/quizzes`);
 }
 
 export async function login(formData: FormData) {

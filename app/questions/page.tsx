@@ -1,9 +1,10 @@
 import { createClient } from '@/app/utils/supabase/server';
 import { Question } from '../data/definitions';
 import QuestionCard from '../components/question-card';
+import AddForm from '../components/add-form';
 
 
-export default async function Quizzes() {
+export default async function Questions() {
 
     const supabase = await createClient();
     const { data: questions, error } = await supabase.from("questions").select();
@@ -22,6 +23,7 @@ export default async function Quizzes() {
                 <div className='flex flex-wrap justify-center gap-4'>
                     {questionData.map((q: Question)=><QuestionCard item={q} key={q.id}/>)}
                 </div>
+                <AddForm type="questions"/>
             </main>
         </>
     )

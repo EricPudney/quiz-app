@@ -1,6 +1,7 @@
 import { createClient } from '@/app/utils/supabase/server';
 import QuizCard from '../components/quiz-card';
 import { Quiz } from '../data/definitions';
+import AddForm from '../components/add-form';
 
 
 export default async function Quizzes() {
@@ -22,6 +23,7 @@ export default async function Quizzes() {
                 <div className='flex flex-wrap justify-center gap-4'>
                     {quizData.map((q: Quiz)=><QuizCard item={q} key={q.id}/>)}
                 </div>
+                <AddForm type="quizzes" />
             </main>
         </>
     )
