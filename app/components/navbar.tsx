@@ -6,7 +6,6 @@ import {
 import Link from "next/link";
 
 import LoginButton from "./login-btn";
-import { checkUser } from "../data/actions";
 
 export default async function Navbar() {
   const navItems = [
@@ -15,9 +14,7 @@ export default async function Navbar() {
     { href: "/questions", icon: QuestionMarkCircleIcon, label: "Questions" },
   ];
 
-  const loggedInUser = await checkUser();
-  console.log("There is a user logged in: ", loggedInUser);
-
+  
   return (
     <>
       <nav className="fixed bottom-0 left-0 right-0 md:top-0 md:bottom-auto bg-white border-t md:border-b border-gray-200 shadow-lg md:shadow-sm z-50">

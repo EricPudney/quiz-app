@@ -9,19 +9,19 @@ export default function Home() {
   const supabase = createClient();
 
   useEffect(() => {
+    
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         console.log(event, session);
-            console.log('Auth state changed:', event, session);
+        console.log('Auth state changed:', event, session);
         session ? setLoggedInUser(true) : setLoggedInUser(false);
       }
     );
     return () => {
-          console.log('Cleaning up auth listener');
-
+      console.log('Cleaning up auth listener');
       authListener.subscription.unsubscribe();
     };
-  }, []);
+  });
 
   const features = [
     {

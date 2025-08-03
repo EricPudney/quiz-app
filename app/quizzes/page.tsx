@@ -23,7 +23,7 @@ export default async function Quizzes() {
                 <div className='flex flex-wrap justify-center gap-4'>
                     {quizData.map((q: Quiz)=><QuizCard item={q} key={q.id}/>)}
                 </div>
-                <AddForm type="quizzes" />
+                <AddForm type="quizzes" key="1"/>
             </main>
         </>
     )

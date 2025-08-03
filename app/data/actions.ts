@@ -4,14 +4,14 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/app/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 
-export async function editItem({ formData, id, type }: { formData: FormData; id: number; type: string }) {
+export async function editItem({ formData, id, type }: { formData: FormData; id: string; type: string }) {
   console.log("updating item in db");
   const supabase = await createClient();
   const response = await supabase.from(type).update(formData).eq('id', id);
   return response
 }
 
-export async function deleteItem({ id, type }: { id: number; type: string }) {
+export async function deleteItem({ id, type }: { id: string; type: string }) {
   const supabase = await createClient();
   const response = await supabase.from(type).delete().eq("id", id);
   revalidatePath("/", "layout");

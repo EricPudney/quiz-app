@@ -2,7 +2,7 @@
 
 import { deleteItem } from "../data/actions";
 
-export default function DeleteBtn({id, type}: {id: number, type: string}) {
+export default function DeleteBtn({id, type}: {id: string, type: string}) {
 
     const deleteIt = async ()=>{
         const response = await deleteItem({id, type})
